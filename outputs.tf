@@ -20,4 +20,4 @@ output "private_route_table_1_id" {
 
 output "private_route_table_2_id" {
   value = module.spoke_vpc.private_route_table_2_id
-}
+}  
