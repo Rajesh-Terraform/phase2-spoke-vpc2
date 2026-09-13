@@ -11,7 +11,7 @@ permissions:
   contents: read
 
 jobs:
-  terraform-destroy:
+  terraform:
     runs-on: ubuntu-latest
 
     steps:
@@ -35,6 +35,9 @@ jobs:
 
       - name: Terraform Validate
         run: terraform validate
+
+      - name: Terraform Destroy Plan
+        run: terraform plan -destroy
 
       - name: Terraform Destroy
         run: terraform destroy -auto-approve  
