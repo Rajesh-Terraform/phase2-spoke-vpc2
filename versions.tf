@@ -2,7 +2,7 @@ terraform {
   required_version = ">= 1.6.0"
 
   backend "s3" {
-    bucket = "phase2-spoke-vpc2-terraform-state-434097521299"
+    bucket = "harish-gaddam-bucket123"
     key    = "phase2-spoke-vpc2/terraform.tfstate"
     region = "ap-south-1"
   }
@@ -16,6 +16,6 @@ terraform {
 }
 
 provider "aws" {
-  region = var.aws_region
+  region = var.aws_region  
 }
   
