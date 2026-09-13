@@ -1,12 +1,10 @@
-
-name: phase2-spoke-vpc2   #### phase2 worlflow ### date 13/9/26
+name: phase2-spoke-vpc2-destroy
 
 on:
   push:
     branches:
       - main
 
-  workflow_dispatch:
 
 permissions:
   id-token: write
@@ -33,13 +31,16 @@ jobs:
         run: terraform init
 
       - name: Terraform Format Check
-        run: terraform fmt 
+        run: terraform fmt -check -recursive
 
       - name: Terraform Validate
         run: terraform validate
 
-      - name: Terraform Plan
-        run: terraform plan
+      - name: Terraform State List
+        run: terraform state list
 
-      - name: Terraform Apply
-        run: terraform apply -auto-approve      
+      - name: Terraform Destroy Plan
+        run: terraform plan -destroy
+
+      - name: Terraform Destroy
+        run: terraform destroy -auto-approve   
