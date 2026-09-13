@@ -1,18 +1,17 @@
-name: phase2-spoke-vpc2
+name: phase2-spoke-vpc2-destroy
 
 on:
   push:
     branches:
       - main
 
-  workflow_dispatch:
 
 permissions:
   id-token: write
   contents: read
 
 jobs:
-  terraform:
+  terraform-destroy:
     runs-on: ubuntu-latest
 
     steps:
@@ -37,8 +36,5 @@ jobs:
       - name: Terraform Validate
         run: terraform validate
 
-      - name: Terraform Plan
-        run: terraform plan
-
-      - name: Terraform Apply
-        run: terraform apply -auto-approve    
+      - name: Terraform Destroy
+        run: terraform destroy -auto-approve  
